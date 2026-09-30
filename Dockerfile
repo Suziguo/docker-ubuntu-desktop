@@ -15,5 +15,6 @@ RUN touch /root/.Xauthority
 EXPOSE 5901
 EXPOSE 6080
 #CMD bash -c "vncserver -localhost no -SecurityTypes None -geometry 1024x768 --I-KNOW-THIS-IS-INSECURE && openssl req -new -subj "/C=JP" -x509 -days 365 -nodes -out self.pem -keyout self.pem && websockify -D --web=/usr/share/novnc/ --cert=self.pem 6080 localhost:5901 && tail -f /dev/null"
-CMD bash -c "vncserver -localhost no -SecurityTypes None -geometry 1024x768 --I-KNOW-THIS-IS-INSECURE && openssl req -new -subj '/C=JP' -x509 -days 365 -nodes -out self.pem -keyout self.pem && echo 'Starting Websockify...' && exec websockify --web=/usr/share/novnc/ --cert=self.pem --heartbeat=15 6080 localhost:5901"
+#CMD bash -c "vncserver -localhost no -SecurityTypes None -geometry 1024x768 --I-KNOW-THIS-IS-INSECURE && openssl req -new -subj '/C=JP' -x509 -days 365 -nodes -out self.pem -keyout self.pem && echo 'Starting Websockify...' && exec websockify --web=/usr/share/novnc/ --cert=self.pem --heartbeat=15 6080 localhost:5901"
+CMD bash -c "vncserver -localhost no -SecurityTypes None -geometry 1024x768 --I-KNOW-THIS-IS-INSECURE && openssl req -new -subj '/C=JP' -x509 -days 365 -nodes -out self.pem -keyout self.pem && echo 'Starting Websockify...' && exec websockify --web=/usr/share/novnc/ --cert=self.pem 6080 localhost:5901"
 
